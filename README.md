@@ -1,95 +1,43 @@
+
 # SOC Log Analyzer
 
-Basic Bash-based SOC log analyzer for Windows/Sysmon JSON logs.
+This is a small Bash project I created while learning SOC analysis and Linux command-line workflows.
 
-## About This Project
+The idea behind this tool is simple: I wanted to practice working with Windows/Sysmon logs, understand Event IDs better, and learn how basic SOC-style log analysis can be automated with Bash and jq.
 
-This is a personal SOC learning project created to practice:
+The script reads JSON-based Windows logs and creates a basic text report. It can show the most common Event IDs, source and target processes, possible LSASS access, PowerShell activity, LOLBAS usage, and basic network connection events.
 
-- Bash scripting
-- Windows/Sysmon log analysis
-- SOC investigation concepts
-- jq JSON parsing
-- Linux command-line workflows
-
-The goal of this project is educational and focused on improving practical SOC analyst skills.
-
----
-
-## Features
-
-- Event ID statistics
-- Event ID quick reference
-- LSASS access detection
-- PowerShell activity detection
-- LOLBAS detection
-- Network connection analysis
-- SOC-style report generation
-- JSON log parsing with jq
-
----
-
-## Skills Practiced
-
-- Bash scripting
-- jq
-- Sysmon analysis
-- Event ID investigation
-- PowerShell detection
-- LOLBAS detection
-- Linux command-line workflows
-- Report generation
-- Git/GitHub workflow
-
----
+This project is mainly educational. It is not meant to replace a real SIEM or professional detection platform. I use it as a practical way to improve my Bash scripting, log analysis, and SOC investigation skills.
 
 ## Requirements
 
-- Bash
-- jq
+The script needs Bash and jq.
 
-Install jq:
+On Debian/Kali/Ubuntu, jq can be installed with:
 
 ```bash
 sudo apt install jq
-```
-
----
+````
 
 ## Usage
 
-Make the script executable:
+First make the script executable:
 
 ```bash
 chmod +x soc_log_analyzer.sh
 ```
 
-Run the analyzer:
+Then run it against a log file:
 
 ```bash
 ./soc_log_analyzer.sh sample.log
 ```
 
-Display help menu:
+You can also display the help menu:
 
 ```bash
 ./soc_log_analyzer.sh --help
 ```
-
----
-
-## Example Detections
-
-The tool can help identify:
-
-- EventID 10 - Process Access
-- LSASS access attempts
-- Suspicious PowerShell activity
-- LOLBAS activity
-- Basic network connection events
-- Suspicious Windows binaries usage
-
----
 
 ## Example Output
 
@@ -99,7 +47,15 @@ The tool can help identify:
 ALERT: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe accessed C:\Windows\System32\lsass.exe
 ```
 
----
+## Screenshots
+
+![SOC Analyzer Output](screenshots/analyzer-output-1.png)
+
+![SOC Analyzer Output 2](screenshots/analyzer-output-2.png)
+
+![SOC Analyzer Output 3](screenshots/analyzer-output-3.png)
+
+![SOC Analyzer Output 4](screenshots/analyzer-output-4.png)
 
 ## Project Structure
 
@@ -107,34 +63,16 @@ ALERT: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe accessed C:\Win
 SOC-Log-Analyzer/
 ├── soc_log_analyzer.sh
 ├── README.md
+├── .gitignore
 ├── reports/
-├── samples/
 └── screenshots/
 ```
 
----
+## Future Ideas
 
-## Notes
-
-This project is intended for educational and SOC training purposes only.
-
-Sample logs should not contain sensitive or private information.
-
----
-
-## Future Improvements
-
-- MITRE ATT&CK mapping
-- CSV export
-- HTML report generation
-- IOC extraction
-- Sigma rule support
-- Threat scoring
-- Linux auth.log support
-- Better detection logic
-
----
+In the future, I would like to improve the detection logic, add MITRE ATT&CK mapping, create HTML reports, add IOC extraction, and maybe support Linux auth.log files as well.
 
 ## Author
 
-Jakub Zytlinski
+Created by Jakub Zytlinski as part of my SOC analyst learning journey.
+
